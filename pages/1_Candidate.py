@@ -19,7 +19,6 @@ AGENT_SYSTEM_PROMPTS = {
         "output_description": "A set of MCQ and written questions for candidate assessment."
     }
 }
-from Admin import AGENT_SYSTEM_PROMPTS, call_agent
 
 def call_agent(system_prompt, input_variables, input_values):
     from groq import Groq
