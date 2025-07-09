@@ -1,6 +1,6 @@
 import streamlit as st
 import re
-from groq import Groq
+from groq import GrocClient
 
 # === PROMPT CONFIG ===
 AGENT_SYSTEM_PROMPTS = {
@@ -21,10 +21,10 @@ AGENT_SYSTEM_PROMPTS = {
 }
 
 # === CALL AGENT ===
-def call_agent(system_prompt, input_variables, input_values):
-    # ✅ Hardcoded Groq API key for testing
-    client = Groq(api_key="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")
+from groc import GrocClient  # your custom wrapper
 
+def call_agent(system_prompt, input_variables, input_values):
+    client = GrocClient(api_key="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")
 
     messages = [{"role": "system", "content": system_prompt}]
     for var in input_variables:
@@ -33,11 +33,9 @@ def call_agent(system_prompt, input_variables, input_values):
             "content": f"{var}: {input_values[var]}"
         })
 
-    chat_completion = client.chat.completions.create(
-        model="mixtral-8x7b-32768",
-        messages=messages,
-    )
-    return chat_completion.choices[0].message.content.strip()
+    chat_completion = client.chat_generate(messages)
+    return chat_completion.text.strip()
+
 
 # === STREAMLIT UI ===
 st.set_page_config(page_title="Candidate Interview", layout="wide", initial_sidebar_state="collapsed")
