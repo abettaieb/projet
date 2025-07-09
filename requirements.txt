@@ -18,3 +18,4 @@ av
 
 # Optional: Text similarity
 sentence-transformers
+groq
