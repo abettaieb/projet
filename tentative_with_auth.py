@@ -987,6 +987,8 @@ if selected_agent_name:
                             
                             st.markdown("---")
                             st.subheader(f"🎯 {agent_config['output_description']}")
+    except Exception as e:
+        st.error(f"❌ Error: {str(e)}")
 
                           # === Enhanced Modal Logic for Interview Question Generator ===
 if selected_agent_name == "Interview Question Generator":
