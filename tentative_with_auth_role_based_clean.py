@@ -31,11 +31,13 @@ if st.session_state.user_role == "Admin":
     selected_agent = st.sidebar.selectbox("Select Tool", agent_options)
     # Then show selected tool's logic
 else:
-    # === Candidate-only interface ===
+    # Example: render candidate UI
     st.title("📝 Candidate Interview")
-    # Input field for job description
     job_desc = st.text_area("Enter the job requirements:")
     if st.button("Start Interview"):
+        # process the interview here
+        pass
+
         # Run Interview Question Generator
         # Parse and display questions (like the modal logic you already had)
 
