@@ -23,8 +23,8 @@ AGENT_SYSTEM_PROMPTS = {
 # === CALL AGENT ===
 def call_agent(system_prompt, input_variables, input_values):
     # ✅ Hardcoded Groq API key for testing
-    api_key = "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"
-    client = Groq(api_key=api_key)
+    client = Groq(api_key="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")
+
 
     messages = [{"role": "system", "content": system_prompt}]
     for var in input_variables:
