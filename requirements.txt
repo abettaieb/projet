@@ -11,9 +11,7 @@ PyMuPDF
 # Image processing and face recognition
 Pillow
 
-# YOLO for face detection
-ultralytics
-deepface
+
 # WebRTC for live camera
 streamlit-webrtc
 av
