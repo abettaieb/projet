@@ -1,22 +1,22 @@
 # Core application dependencies
-streamlit>=1.28.0
-requests>=2.31.0
-pandas>=2.0.0
-numpy>=1.24.0
+streamlit
+requests
+pandas
+numpy
 
 # PDF processing
-PyPDF2>=3.0.0
-PyMuPDF>=1.23.0
+PyPDF2
+PyMuPDF
 
 # Image processing and face recognition
-Pillow>=10.0.0
+Pillow
 
 # YOLO for face detection
-ultralytics>=8.0.0
+ultralytics
 deepface
 # WebRTC for live camera
-streamlit-webrtc>=0.47.0
-av>=10.0.0
+streamlit-webrtc
+av
 
 # Optional: Text similarity
-sentence-transformers>=2.2.0
+sentence-transformers
