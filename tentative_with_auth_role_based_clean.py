@@ -21,6 +21,20 @@ from datetime import datetime
 import PyPDF2 
 from PyPDF2 import PdfReader
 
+if "user_role" not in st.session_state:
+    st.session_state.user_role = st.radio("🔐 Select your role", ["Admin", "Candidate"], key="role_selector")
+    
+
+if st.session_state.user_role == "Admin":
+    agent_options = ["Job Description Writer", "Candidate Screener", "CV-to-Requirements Matcher", "Interview Question Generator"]
+else:
+    agent_options = ["Interview Question Generator"]
+
+selected_agent_name = st.sidebar.selectbox("🛠️ Sélectionnez un outil", agent_options)
+
+st.sidebar.markdown(f"🧑‍💼 **Role:** {st.session_state.user_role}")
+
+
 # --- Initialize Session State FIRST ---
 # API configuration state
 if "groc_api_key" not in st.session_state:
