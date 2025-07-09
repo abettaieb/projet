@@ -21,26 +21,24 @@ from datetime import datetime
 import PyPDF2 
 from PyPDF2 import PdfReader
 
-if "user_role" not in st.session_state:
-    st.session_state.user_role = st.selectbox("Select your role", ["Candidate", "Admin"])
-    
-if st.session_state.user_role == "Admin":
-    # === Show full app ===
-    st.sidebar.title("Configuration")
-    # ... include tool selector, API key, agent UI ...
-    selected_agent = st.sidebar.selectbox("Select Tool", agent_options)
-    # Then show selected tool's logic
-else:
-    # Example: render candidate UI
-    st.title("📝 Candidate Interview")
-    job_desc = st.text_area("Enter the job requirements:")
+# At the top of your Streamlit file
+params = st.experimental_get_query_params()
+role = params.get("role", ["admin"])[0].lower()
+
+if role == "candidate":
+    # 🚫 Hide sidebar
+    st.set_page_config(page_title="Candidate Interview", layout="wide", initial_sidebar_state="collapsed")
+    st.title("🎤 Interview Interface")
+    job_desc = st.text_area("🧾 Paste job requirements:")
     if st.button("Start Interview"):
-        # process the interview here
-        pass
-
-        # Run Interview Question Generator
-        # Parse and display questions (like the modal logic you already had)
-
+        # generate + display questions
+        ...
+else:
+    # ✅ Admin full interface
+    st.set_page_config(page_title="Admin Panel", layout="wide")
+    st.sidebar.title("Admin Tools")
+    selected_tool = st.sidebar.selectbox("Choose Tool", [...])
+    ...
 
 
 # --- Initialize Session State FIRST ---
