@@ -173,14 +173,6 @@ See `requirements.txt` for complete list. Key dependencies:
 4. Add tests if applicable
 5. Submit a pull request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 👨‍💻 Author
-
-**Ahmed Abdelhedi**
-- GitHub: [@AhmedAbdelhedi899](https://github.com/AhmedAbdelhedi899)
 
 ## 🙏 Acknowledgments
 
