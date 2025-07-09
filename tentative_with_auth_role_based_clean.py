@@ -18,6 +18,8 @@ import os
 import threading
 import time
 from datetime import datetime
+import PyPDF2 
+from PyPDF2 import PdfReader
 
 # --- Initialize Session State FIRST ---
 # API configuration state
