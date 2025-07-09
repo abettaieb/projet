@@ -21,24 +21,21 @@ from datetime import datetime
 import PyPDF2 
 from PyPDF2 import PdfReader
 
-# At the top of your Streamlit file
-params = st.experimental_get_query_params()
-role = params.get("role", ["admin"])[0].lower()
+# Use the new stable method
+params = st.query_params
+role = params.get("role", "admin").lower()
 
 if role == "candidate":
-    # 🚫 Hide sidebar
     st.set_page_config(page_title="Candidate Interview", layout="wide", initial_sidebar_state="collapsed")
-    st.title("🎤 Interview Interface")
-    job_desc = st.text_area("🧾 Paste job requirements:")
+    st.title("🧪 Candidate Interview")
+    job_desc = st.text_area("Enter job requirements:")
     if st.button("Start Interview"):
-        # generate + display questions
-        ...
+        st.write("Interview would start here...")
 else:
-    # ✅ Admin full interface
     st.set_page_config(page_title="Admin Panel", layout="wide")
-    st.sidebar.title("Admin Tools")
-    selected_tool = st.sidebar.selectbox("Choose Tool", [...])
-    ...
+    st.sidebar.title("🛠️ Admin Tools")
+    tool = st.sidebar.selectbox("Choose Tool", ["Job Description Writer", "Candidate Screener", "CV Matcher", "Interview Generator"])
+    st.write(f"Admin tool selected: {tool}")
 
 
 # --- Initialize Session State FIRST ---
