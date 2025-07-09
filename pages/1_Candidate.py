@@ -1,9 +1,6 @@
 import streamlit as st
 import re
-from agents import AGENT_SYSTEM_PROMPTS, call_agent  # from your actual app
 
-import streamlit as st
-import re
 
 # === PROMPT CONFIG ===
 AGENT_SYSTEM_PROMPTS = {
