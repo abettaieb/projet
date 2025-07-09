@@ -19,16 +19,25 @@ AGENT_SYSTEM_PROMPTS = {
         "output_description": "A set of MCQ and written questions for candidate assessment."
     }
 }
+from Admin import AGENT_SYSTEM_PROMPTS, call_agent
 
-# === AGENT CALL FUNCTION ===
 def call_agent(system_prompt, input_variables, input_values):
     from groq import Groq
     client = Groq(api_key=st.secrets["groc_api_key"])
+
     messages = [{"role": "system", "content": system_prompt}]
     for var in input_variables:
-        messages.append({"role": "user", "content": f"{var}: {input_values[var]}"})
-    chat_completion = client.chat.completions.create(model="mixtral-8x7b-32768", messages=messages)
+        messages.append({
+            "role": "user",
+            "content": f"{var}: {input_values[var]}"
+        })
+
+    chat_completion = client.chat.completions.create(
+        model="mixtral-8x7b-32768",
+        messages=messages,
+    )
     return chat_completion.choices[0].message.content.strip()
+
 
 
 st.set_page_config(page_title="Candidate Interview", layout="wide", initial_sidebar_state="collapsed")
