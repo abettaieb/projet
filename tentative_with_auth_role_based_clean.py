@@ -22,17 +22,23 @@ import PyPDF2
 from PyPDF2 import PdfReader
 
 if "user_role" not in st.session_state:
-    st.session_state.user_role = st.radio("🔐 Select your role", ["Admin", "Candidate"], key="role_selector")
+    st.session_state.user_role = st.selectbox("Select your role", ["Candidate", "Admin"])
     
-
 if st.session_state.user_role == "Admin":
-    agent_options = ["Job Description Writer", "Candidate Screener", "CV-to-Requirements Matcher", "Interview Question Generator"]
+    # === Show full app ===
+    st.sidebar.title("Configuration")
+    # ... include tool selector, API key, agent UI ...
+    selected_agent = st.sidebar.selectbox("Select Tool", agent_options)
+    # Then show selected tool's logic
 else:
-    agent_options = ["Interview Question Generator"]
+    # === Candidate-only interface ===
+    st.title("📝 Candidate Interview")
+    # Input field for job description
+    job_desc = st.text_area("Enter the job requirements:")
+    if st.button("Start Interview"):
+        # Run Interview Question Generator
+        # Parse and display questions (like the modal logic you already had)
 
-selected_agent_name = st.sidebar.selectbox("🛠️ Sélectionnez un outil", agent_options)
-
-st.sidebar.markdown(f"🧑‍💼 **Role:** {st.session_state.user_role}")
 
 
 # --- Initialize Session State FIRST ---
