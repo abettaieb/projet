@@ -152,32 +152,26 @@ AGENT_SYSTEM_PROMPTS = {
         "output_description": "Summary of job requirements, summary of candidate qualifications, and fit analysis."
     },
     "Interview Question Generator": {
-        "prompt": (
-            "You are an HR expert tasked with designing a diverse set of technical interview questions. "
-            "Given a list of job requirements, generate a combination of multiple-choice (QCM) and open-ended (written) questions. "
-            "Each question must test a specific knowledge area relevant to the requirements. "
-            "Format MCQs as:
-"
-            "Q: ...
+        "prompt": """You are an HR expert tasked with designing a diverse set of technical interview questions.
+Given a list of job requirements, generate a combination of multiple-choice (QCM) and open-ended (written) questions.
+Each question must test a specific knowledge area relevant to the requirements.
+Format MCQs as:
+Q: ...
 A) ...
 B) ...
 C) ...
 D) ...
 Answer: X
 
-"
-            "Format written questions as:
-"
-            "Q: ...
+Format written questions as:
+Q: ...
 Type: written
 
-"
-            "Include at least 2 written questions if possible."
-        ),
-        "inputs": ["Job Requirements"],
-        "output_description": "A set of MCQ and written questions for candidate assessment."
-    }
+Include at least 2 written questions if possible.""",
+    "inputs": ["Job Requirements"],
+    "output_description": "A set of MCQ and written questions for candidate assessment."
 }
+    }
 
 # --- File Extraction Functions ---
 def extract_text_from_pdf(pdf_file_bytes):
